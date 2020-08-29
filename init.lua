@@ -2,17 +2,60 @@
 -- Nodes --
 -----------
 
+local bottem_half = ""
+if minetest.get_modpath("default") then
+    bottem_half = "default_stone_block.png"
+else
+    bottem_half = "gravel.png"
+end
+
 minetest.register_node("cart_addon:cart_gravel", {
 	description = "Cart Gravel",
 	tiles = {"gravel.png"},
 	groups = {crumbly = 2, falling_node = 1},
-	drop = {
-		max_items = 1,
-		items = {
-			{items = {"cart_addon:cart_gravel"}}
-		}
-	}
 })
+
+minetest.register_node("cart_addon:solid_cart_gravel", {
+    description = "Cart gravel with a base",
+    tiles = {
+        "gravel.png",
+        bottem_half,
+        "gravel.png^[lowpart:50:" .. bottem_half,
+        "gravel.png^[lowpart:50:" .. bottem_half,
+        "gravel.png^[lowpart:50:" .. bottem_half,
+        "gravel.png^[lowpart:50:" .. bottem_half,
+    },
+    groups = {crumbly = 2},
+})
+
+if minetest.get_modpath("moreblocks") then
+    local subset = {
+        { "micro", "" },
+        { "slope", "_half" },
+        { "slope", "_half_raised" },
+        { "slope", "" },
+    }
+
+    stairsplus:register_custom_subset(subset, "cart_addon", "cart_gravel", "cart_addon:cart_gravel", {
+        description = "Cart Gravel",
+        tiles = {"gravel.png"},
+        groups = {crumbly = 2, falling_node = 1},
+    })
+
+    stairsplus:register_custom_subset(subset, "cart_addon", "solid_cart_gravel", "cart_addon:solid_cart_gravel", {
+        description = "Cart gravel with a base",
+        tiles = {
+            "gravel.png",
+            bottem_half,
+            "gravel.png^[lowpart:50:" .. bottem_half,
+            "gravel.png^[lowpart:50:" .. bottem_half,
+            "gravel.png^[lowpart:50:" .. bottem_half,
+            "gravel.png^[lowpart:50:" .. bottem_half,
+        },
+        groups = {crumbly = 2},
+    })
+
+end
 
 -----------
 -- Rails --
