@@ -2,7 +2,7 @@
 -- Nodes --
 -----------
 
-local bottem_half = "gravel.png"
+local bottem_half = "gravel_base.png"
 if minetest.get_modpath("default") then
     bottem_half = "default_stone_block.png"
 end
