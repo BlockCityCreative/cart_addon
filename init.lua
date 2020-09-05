@@ -2,11 +2,9 @@
 -- Nodes --
 -----------
 
-local bottem_half = ""
+local bottem_half = "gravel.png"
 if minetest.get_modpath("default") then
     bottem_half = "default_stone_block.png"
-else
-    bottem_half = "gravel.png"
 end
 
 minetest.register_node("cart_addon:cart_gravel", {
@@ -66,7 +64,12 @@ alpha_rail_groups.not_in_creative_inventory = 1
 
 carts:register_rail("cart_addon:mc_rail", {
     description = "rail",
-    tiles = {"default_rail.png", "default_rail_curved.png", "default_rail_t_junction.png", "default_rail_crossing.png"},
+    tiles = {
+        "default_rail.png",
+        "default_rail_curved.png",
+        "default_rail_t_junction.png",
+        "default_rail_crossing.png"
+    },
 	inventory_image = "default_rail.png",
 	wield_image = "default_rail.png",
 	groups = carts.get_rail_groups(),
@@ -74,7 +77,12 @@ carts:register_rail("cart_addon:mc_rail", {
 
 carts:register_rail("cart_addon:mc_prail", {
     description = "rail",
-    tiles = {"mcl_minecarts_rail_golden_powered_edit.png", "mcl_minecarts_rail_golden_curved_powered_edit.png", "mcl_minecarts_rail_golden_t_junction_powered_edit.png", "mcl_minecarts_rail_golden_crossing_powered_edit.png"},
+    tiles = {
+        "mcl_minecarts_rail_golden_powered_edit.png",
+        "mcl_minecarts_rail_golden_curved_powered_edit.png",
+        "mcl_minecarts_rail_golden_t_junction_powered_edit.png",
+        "mcl_minecarts_rail_golden_crossing_powered_edit.png"
+    },
 	inventory_image = "mcl_minecarts_rail_golden_powered_edit.png",
 	wield_image = "mcl_minecarts_rail_golden_powered_edit.png",
 	groups = carts.get_rail_groups(),
@@ -82,7 +90,12 @@ carts:register_rail("cart_addon:mc_prail", {
 
 carts:register_rail("cart_addon:alpha_rail", {
     description = "alpha rail",
-    tiles = {"carts_rail_straight_alpha.png", "carts_rail_curved_alpha.png", "carts_rail_t_junction_alpha.png", "carts_rail_crossing_alpha.png"},
+    tiles = {
+        "carts_rail_straight_alpha.png",
+        "carts_rail_curved_alpha.png",
+        "carts_rail_t_junction_alpha.png",
+        "carts_rail_crossing_alpha.png"
+    },
     drop = {
 		max_items = 1,
 		items = {
@@ -96,7 +109,12 @@ carts:register_rail("cart_addon:alpha_rail", {
 
 carts:register_rail("cart_addon:alpha_powered_rail", {
     description = "alpha powered rail",
-    tiles = {"carts_rail_straight_alpha.png", "carts_rail_curved_alpha.png", "carts_rail_t_junction_alpha.png", "carts_rail_crossing_alpha.png"},
+    tiles = {
+        "carts_rail_straight_alpha.png",
+        "carts_rail_curved_alpha.png",
+        "carts_rail_t_junction_alpha.png",
+        "carts_rail_crossing_alpha.png"
+    },
     drop = {
 		max_items = 1,
 		items = {
@@ -110,7 +128,12 @@ carts:register_rail("cart_addon:alpha_powered_rail", {
 
 carts:register_rail("cart_addon:alpha_brake_rail", {
     description = "alpha brake rail",
-    tiles = {"carts_rail_straight_alpha.png", "carts_rail_curved_alpha.png", "carts_rail_t_junction_alpha.png", "carts_rail_crossing_alpha.png"},
+    tiles = {
+        "carts_rail_straight_alpha.png",
+        "carts_rail_curved_alpha.png",
+        "carts_rail_t_junction_alpha.png",
+        "carts_rail_crossing_alpha.png"
+    },
     drop = {
 		max_items = 1,
 		items = {
