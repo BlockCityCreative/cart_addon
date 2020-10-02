@@ -1,3 +1,21 @@
+---------------
+-- functions --
+---------------
+
+local function is_protected(pos, name)
+    if minetest.is_protected(pos, name) then
+        minetest.log(
+            "action",
+            name ..
+            "tried to convert node at " ..
+            minetest.pos_to_string(pos)
+        )
+        minetest.record_protection_violation(pos, name)
+        return true
+    end
+    return false
+end
+
 -----------
 -- Nodes --
 -----------
@@ -156,8 +174,11 @@ minetest.register_tool("cart_addon:rail_converter", {
         if(pointed_thing.type == "node") then
             local pos = pointed_thing.under
             local name = minetest.get_node(pointed_thing.under).name
+            local pname = user:get_player_name()
 
-            if(name == "carts:rail") then
+            if(is_protected(pos, pname) == true) then
+                return
+            elseif(name == "carts:rail") then
                 minetest.swap_node(pos, {name = "cart_addon:alpha_rail"})
             elseif(name == "carts:powerrail") then
                 minetest.swap_node(pos, {name = "cart_addon:alpha_powered_rail"})
@@ -170,8 +191,11 @@ minetest.register_tool("cart_addon:rail_converter", {
         if(pointed_thing.type == "node") then
             local pos = pointed_thing.under
             local name = minetest.get_node(pointed_thing.under).name
+            local pname = user:get_player_name()
 
-            if(name == "cart_addon:alpha_rail") then
+            if(is_protected(pos, pname) == true) then
+                return
+            elseif(name == "cart_addon:alpha_rail") then
                 minetest.swap_node(pos, {name = "carts:rail"})
             elseif(name == "cart_addon:alpha_powered_rail") then
                 minetest.swap_node(pos, {name = "carts:powerrail"})
